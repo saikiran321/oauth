@@ -44,8 +44,9 @@ class OauthController < ApplicationController
 	end
 
 	def signout
-		@redirect_uri='http://127.0.0.1:3000/'
+		@redirect_uri=params[:path]
 		session.delete(:access_token)
+		cookies.delete :remember_token
 		@signout = $AUTH_SERVER +$CMD_SIGNOUT + "?response_type="+ $RESPONSE_TYPE +"&client_id=" +$CLIENT_ID +"&redirect_uri="+@redirect_uri +"&scope="+ $SCOPE +"&state=" +$STATE
 		redirect_to @signout
 	end

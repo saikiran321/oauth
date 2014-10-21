@@ -4,7 +4,7 @@
 <%= @tokenURL %>
 <%= link_to "sign in",  @auth_url %>
 <%if session[:access_token] %>
-<%= link_to "sign out", signout_path %>
+<%= link_to "sign out", signout_path(path: @redirect_uri) %>
 <%= @signout %>
 <h1><%= @access_token %></h1>
 <h1><%= @access_url %></h1>
